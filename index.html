@@ -1,0 +1,50 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script module>
+      function addItem() {
+        const inputValue = document.getElementById("infoInput").value;
+
+        // Create new list item
+        const listItem = document.createElement("li");
+
+        // Create span element for the input value
+        let textNode = document.createElement("span");
+        textNode.appendChild(document.createTextNode(inputValue));
+
+        // Create delete button
+        let deleteButton = document.createElement("button");
+
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener("click", function () {
+          listItem.remove();
+        });
+
+        // Append span and delete button to list item
+        listItem.appendChild(textNode);
+        listItem.appendChild(deleteButton);
+
+        // Append list item to the unordered list
+        document.getElementById("taskList").appendChild(listItem);
+
+        // Clear the input field
+        document.getElementById("infoInput").value = "";
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>Task Manager</h1>
+
+      <input type="text" id="infoInput" placeholder="Add a new task..." />
+      <button onclick="addItem()">Add</button>
+
+      <ul id="taskList"></ul>
+    </div>
+  </body>
+</html>
